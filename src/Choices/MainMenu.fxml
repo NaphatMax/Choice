@@ -12,7 +12,7 @@
             <Font size="60.0" />
          </font>
       </Text>
-      <Button fx:id="startButton" layoutX="509.0" layoutY="281.0" mnemonicParsing="false" onAction="#startButton" prefHeight="128.0" prefWidth="307.0" text="Button" textAlignment="CENTER" />
+      <Button fx:id="startButton" layoutX="509.0" layoutY="281.0" mnemonicParsing="false" prefHeight="128.0" prefWidth="307.0" text="Button" textAlignment="CENTER" />
       <Text fx:id="author" layoutX="5.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1280.0">
          <font>
             <Font size="40.0" />
