@@ -12,14 +12,29 @@ import javafx.util.Duration;
 
 public class Main extends Application {
 
-    public  static MediaPlayer player;
+    public  static MediaPlayer player, songPlayer, inGameSong;
+    public static boolean isMusicPLaying;
+    public static Media mainsong;
+    public static  double volumn;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Media media = new Media(getClass().getResource("/Resource/NyanCat.mp3").toURI().toString());
-        player = new MediaPlayer(media);
+        Media nyancat = new Media(getClass().getResource("/Resource/NyanCat.mp3").toURI().toString());
+        player = new MediaPlayer(nyancat);
         player.setOnEndOfMedia(() -> player.seek(Duration.ZERO));
+
+        mainsong = new Media(getClass().getResource("/Resource/mainmenu.wav").toURI().toString());
+        songPlayer = new MediaPlayer(mainsong);
+        songPlayer.setOnEndOfMedia(() -> songPlayer.seek(Duration.ZERO));
+
+
+        //bgsong
+        volumn = 0.5;
+        Main.songPlayer.setVolume(volumn);
+        Main.songPlayer.play();
+        isMusicPLaying = true;
+
 
         Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
         primaryStage.setTitle("Choice");
