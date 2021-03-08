@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Menu;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -42,7 +40,46 @@ public class GamePlayController implements Initializable {
     Menu backMain;
 
     @FXML
-    private ImageView imageview;
+    ImageView imageview;
+
+    @FXML
+    Button answer1;
+
+    @FXML
+    Button answer2;
+
+    @FXML
+    Button answer3;
+
+    @FXML
+    Text questionText;
+
+    @FXML
+    TextArea questionDesc;
+
+
+    Question[] questions = {
+            new Question("Welcome to choice game",0, "Welcome you guys to the game", "/Resource/Riddler-Dangerous.jpg",
+                    "First question", 1, "Second question", 2,"Third question", 3),
+
+            new Question("First Question",1, "First question", "/Resource/Riddler-Dangerous.jpg",
+                    "Second question", 2, "Third question", 3,"Forth question", 4),
+
+            new Question("Second Question",2, "Second question", "/Resource/Riddler-Dangerous.jpg",
+                    "Third question", 3, "Forth question", 4,"Fifth question", 5),
+
+            new Question("Third Question",3, "Third question", "/Resource/Riddler-Dangerous.jpg",
+                    "Forth question", 4, "Final question", 5,"Final question", 5),
+
+            new Question("Forth Question",4, "Forth question", "/Resource/Riddler-Dangerous.jpg",
+                    "Final question", 5, "Final question", 5,"Final question", 5),
+
+            new Question("Final Question",5, "Final question", "/Resource/Riddler-Dangerous.jpg",
+                    "The End", 0, "The End", 0,"The End", 0)
+
+    };
+
+    Question currentQuestion;
 
 
     public void MusicToggle(){
@@ -66,11 +103,11 @@ public class GamePlayController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        currentQuestion = questions[0];
+
+        SetDisplayQuestion(currentQuestion);
+
         Main.songPlayer.stop();
-
-        Image image = new Image("/Resource/Riddler-Dangerous.jpg");
-
-        imageview.setImage(image);
 
         try {
             Main.mainsong = new Media(getClass().getResource("/Resource/ingame.wav").toURI().toString());
@@ -121,6 +158,34 @@ public class GamePlayController implements Initializable {
         nStage.showAndWait();
 
         pane.setDisable(false);
+    }
+
+    public void changeQuestion(Button button){
+        int nextQuestionId = Integer.parseInt(button.getId());
+        currentQuestion = questions[nextQuestionId];
+
+        SetDisplayQuestion(currentQuestion);
+    }
+    public void SetDisplayQuestion(Question question){
+
+        questionText.setText(question.eventTitle);
+        questionDesc.setText(question.eventDesc);
+
+        answer1.setText(question.answerOneText);
+        answer1.setId(String.valueOf(question.answerOneDest));
+        answer1.setOnAction(actionEvent -> changeQuestion(answer1));
+
+        answer2.setText(question.answerTwoText);
+        answer2.setId(String.valueOf(question.answerTwoDest));
+        answer2.setOnAction(actionEvent -> changeQuestion(answer2));
+
+        answer3.setText(question.answerThreeText);
+        answer3.setId(String.valueOf(question.answerThreeDest));
+        answer3.setOnAction(actionEvent -> changeQuestion(answer3));
+
+        imageview.setImage(new Image(question.imagePath));
+
+
     }
 
 }
