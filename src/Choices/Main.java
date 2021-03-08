@@ -16,6 +16,7 @@ public class Main extends Application {
     public static boolean isMusicPLaying;
     public static Media mainsong;
     public static  double volumn;
+    public static String playingSong;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -25,6 +26,7 @@ public class Main extends Application {
         player.setOnEndOfMedia(() -> player.seek(Duration.ZERO));
 
         mainsong = new Media(getClass().getResource("/Resource/mainmenu.wav").toURI().toString());
+        playingSong = "/Resource/mainmenu.wav";
         songPlayer = new MediaPlayer(mainsong);
         songPlayer.setOnEndOfMedia(() -> songPlayer.seek(Duration.ZERO));
 
