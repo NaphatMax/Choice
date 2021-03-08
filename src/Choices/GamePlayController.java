@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -39,6 +41,9 @@ public class GamePlayController implements Initializable {
     @FXML
     Menu backMain;
 
+    @FXML
+    private ImageView imageview;
+
 
     public void MusicToggle(){
         if(muteCheck.isSelected()){
@@ -62,6 +67,10 @@ public class GamePlayController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Main.songPlayer.stop();
+
+        Image image = new Image("/Resource/Riddler-Dangerous.jpg");
+
+        imageview.setImage(image);
 
         try {
             Main.mainsong = new Media(getClass().getResource("/Resource/ingame.wav").toURI().toString());
