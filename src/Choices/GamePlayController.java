@@ -59,23 +59,59 @@ public class GamePlayController implements Initializable {
 
 
     Question[] questions = {
-            new Question("Welcome to choice game",0, "Welcome you guys to the game", "/Resource/Riddler-Dangerous.jpg",
-                    "First question", 1, "Second question", 2,"Third question", 3, "/Resource/ingame.wav"),
+            //0
+            new Question("I am Batman",0, "I am Batman Gotham's greatest hero. Deathstroke is on the run. How should Batman pursuit Deathstroke??  ", "/Resource/batmanvsdeathstroke.jpg",
+                    "BatPod", 1, "BatMobile", 2,"BatWing", 3, "/Resource/songFive.wav"),
 
-            new Question("First Question",1, "First question", "/Resource/Riddler-Dangerous.jpg",
-                    "Second question", 2, "Third question", 3,"Forth question", 4, "/Resource/ingame.wav"),
+            //1
+            new Question("Pursuing Deathstroke with BatPod",1, "Batman is going after Deathstroke by riding BatPod. However Deathstroke attacks Batman with assault rifle!!!\n How should Batman counter Deathstroke's attack??", "/Resource/batpod.jpg",
+                    "Batarang", 4, "Sonic wave", 5,"Bat Claw", 6, "/Resource/songTwo.wav"),
 
-            new Question("Second Question",2, "Second question", "/Resource/Riddler-Dangerous.jpg",
-                    "Third question", 3, "Forth question", 4,"Fifth question", 5, "/Resource/ingame.wav"),
+            //2
+            new Question("Pursuing Deathstroke with BatMobile",2, "Batman is going after Deathstroke by driving BatMobile. However Deathstroke attacks Batman with assault rifle!!!\n How should Batman counter Deathstroke's attack??", "/Resource/batmobile.jpg",
+                    "Batarang", 4, "Sonic wave", 5,"Bat Claw", 6, "/Resource/songTwo.wav"),
 
-            new Question("Third Question",3, "Third question", "/Resource/Riddler-Dangerous.jpg",
-                    "Forth question", 4, "Final question", 5,"Final question", 5, "/Resource/ingame.wav"),
+            //3
+            new Question("Pursuing Deathstroke with BatWing",3, "Batman is going after Deathstroke by flying BatWing. However Deathstroke attacks Batman with assault rifle!!!\n How should Batman counter Deathstroke's attack??", "/Resource/batwing.jpg",
+                    "Batarang", 4, "Sonic wave", 5,"Bat Claw", 6, "/Resource/songTwo.wav"),
 
-            new Question("Forth Question",4, "Forth question", "/Resource/Riddler-Dangerous.jpg",
-                    "Final question", 5, "Final question", 5,"Final question", 5, "/Resource/FourthQuestion.wav"),
+            //4
+            new Question("Batman counter attack Deathstroke by Batarang",4, "Batman throws Batarangs at Deathstroke, but Deathstroke dodge all the Batarangs that Batman threw at him!!!\n Now they are facing each other one-one on hand combat. Which hand combat style should Batman uses??", "/Resource/batarang.jpg",
+                    "Muay Thai", 7, "Jiu-jitsu", 8,"Krav maga", 9, "/Resource/songThree.wav"),
 
-            new Question("Final Question",5, "Final question", "/Resource/Riddler-Dangerous.jpg",
-                    "The End", 0, "The End", 0,"The End", 0, "/Resource/ingame.wav")
+            //5
+            new Question("Batman counter attack Deathstroke by Sonic wave",5, "Batman uses Sonic wave gun at Deathstroke, but Deathstroke dodge all the wave that Batman shoot at him!!!\n Now they are facing each other one-one on hand combat. Which hand combat style should Batman uses??", "/Resource/sonicwave.jpg",
+                    "Muay Thai", 7, "Jiu-jitsu", 8,"Krav maga", 9, "/Resource/songThree.wav"),
+
+            //6
+            new Question("Batman counter attack Deathstroke by Bat Claw",6, "Batman shoot Bat Claw at Deathstroke, but Deathstroke dodge the Bat Claw that Batman shoot at him!!!\n Now they are facing each other one-one on hand combat. Which hand combat style should Batman uses??", "/Resource/batclaw.jpg",
+                    "Muay Thai", 7, "Jiu-jitsu", 8,"Krav maga", 9, "/Resource/songThree.wav"),
+
+            //7
+            new Question("Muay Thai hand to hand combat against Deathstroke",6, "Batman is using Muay Thai combat style against Deathstroke and giving DeathStroke a hard time to beating Batman.\n Finally Batman has taken Deathstroke down. Where should Batman lock him??", "/Resource/batmanvsdeathstroke.jpg",
+                    "Batcave", 10, "Arkham Asylum", 11,"GCPD", 12, "/Resource/songOne.wav"),
+
+            //8
+            new Question("Jiu-jitsu hand to hand combat against Deathstroke",6, "Batman is using Jiu-jitsu combat style against Deathstroke and giving DeathStroke a hard time to beating Batman.\n Finally Batman has taken Deathstroke down. Where should Batman lock him??", "/Resource/batmanfight.jpg",
+                    "Batcave", 10, "Arkham Asylum", 11,"GCPD", 12, "/Resource/songOne.wav"),
+
+            //9
+            new Question("Krav mage hand to hand combat against Deathstroke",6, "Batman is using Krav mage combat style against Deathstroke and giving DeathStroke a hard time to beating Batman.\n Finally Batman has taken Deathstroke down. Where should Batman lock him??", "/Resource/batmanfight2.jpg",
+                    "Batcave", 10, "Arkham Asylum", 11,"GCPD", 12, "/Resource/songOne.wav"),
+
+            //10
+            new Question("Batman put Deathstroke in the Batcave",6, "Batman lock Deathstroke up in the Batcave", "/Resource/batcave.jpg",
+                    "End", 0, "End", 0,"End", 0, "/Resource/songFour.wav"),
+
+            //11
+            new Question("Batman put Deathstroke in the Arkham Asylum",6, "Batman lock Deathstroke up in the Arkham Asylum", "/Resource/arkhamasylum.jpg",
+                    "End", 0, "End", 0,"End", 0, "/Resource/songFour.wav"),
+
+            //12
+            new Question("Batman hand Deathstroke over GCPD",6, "Batman lock Deathstroke up in the GCPD cage", "/Resource/gcpd.png",
+                    "End", 0, "End", 0,"End", 0, "/Resource/songFour.wav"),
+
+
 
     };
 
@@ -177,6 +213,7 @@ public class GamePlayController implements Initializable {
     }
     public void SetDisplayQuestion(Question question) throws URISyntaxException {
         if(!question.music.equalsIgnoreCase(Main.playingSong)){
+            Main.songPlayer.stop();
             Main.mainsong = new Media(getClass().getResource(question.music).toURI().toString());
             Main.playingSong = "/Resource/ingame.wav";
             Main.songPlayer = new MediaPlayer(Main.mainsong);

@@ -16,7 +16,7 @@
    <children>
       <Text fx:id="questionText" layoutX="14.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EventText">
          <font>
-            <Font size="72.0" />
+            <Font size="36.0" />
          </font>
       </Text>
       <TextArea fx:id="questionDesc" editable="false" layoutX="14.0" layoutY="139.0" prefHeight="450.0" prefWidth="700.0" />

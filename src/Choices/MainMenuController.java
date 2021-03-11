@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -17,7 +19,6 @@ import javafx.util.Duration;
 
 import javax.print.DocFlavor;
 import java.applet.Applet;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +56,15 @@ public class MainMenuController implements Initializable {
     @FXML
     CheckBox muteCheck;
 
+    @FXML
+    ImageView imageOne;
+
+    @FXML
+    ImageView imageTwo;
+
+    @FXML
+    ImageView imageThree;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -87,6 +97,9 @@ public class MainMenuController implements Initializable {
         startButton.setText("Start Game");
         quitButton.setText("Quit");
         scoreBoard.setText("Score Board");
+
+        imageOne.setImage(new Image("/Resource/batman.gif"));
+        imageTwo.setImage(new Image("/Resource/batmanTwo.gif"));
 
                 //volumn slider
         volumnSlider.setValue(Main.songPlayer.getVolume());
